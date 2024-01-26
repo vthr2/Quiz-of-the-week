@@ -1,0 +1,115 @@
+{
+    "questions": [
+      {
+        "question": "What is the powerhouse of the cell?",
+        "type": "Biology",
+        "options": {
+          "a": "Ribosome",
+          "b": "Mitochondria",
+          "c": "Nucleus",
+          "d": "Endoplasmic reticulum"
+        },
+        "correct_answer": "b"
+      },
+      {
+        "question": "Which planet is known as the Red Planet?",
+        "type": "Astronomy",
+        "options": {
+          "a": "Mars",
+          "b": "Venus",
+          "c": "Jupiter",
+          "d": "Mercury"
+        },
+        "correct_answer": "a"
+      },
+      {
+        "question": "Who painted the Mona Lisa?",
+        "type": "Art",
+        "options": {
+          "a": "Vincent van Gogh",
+          "b": "Leonardo da Vinci",
+          "c": "Pablo Picasso",
+          "d": "Michelangelo"
+        },
+        "correct_answer": "b"
+      },
+      {
+        "question": "Which gas do plants absorb for photosynthesis?",
+        "type": "Botany",
+        "options": {
+          "a": "Oxygen",
+          "b": "Carbon dioxide",
+          "c": "Nitrogen",
+          "d": "Hydrogen"
+        },
+        "correct_answer": "b"
+      },
+      {
+        "question": "What is the capital of France?",
+        "type": "Geography",
+        "options": {
+          "a": "Madrid",
+          "b": "Berlin",
+          "c": "Paris",
+          "d": "Rome"
+        },
+        "correct_answer": "c"
+      },
+      {
+        "question": "Who wrote the play 'Romeo and Juliet'?",
+        "type": "Literature",
+        "options": {
+          "a": "William Shakespeare",
+          "b": "Charles Dickens",
+          "c": "Mark Twain",
+          "d": "Jane Austen"
+        },
+        "correct_answer": "a"
+      },
+      {
+        "question": "What is the largest mammal in the world?",
+        "type": "Zoology",
+        "options": {
+          "a": "Elephant",
+          "b": "Blue whale",
+          "c": "Giraffe",
+          "d": "Hippopotamus"
+        },
+        "correct_answer": "b"
+      },
+      {
+        "question": "Which country is famous for the sport of bullfighting?",
+        "type": "Culture",
+        "options": {
+          "a": "Spain",
+          "b": "Italy",
+          "c": "Mexico",
+          "d": "France"
+        },
+        "correct_answer": "a"
+      },
+      {
+        "question": "What is the hardest mineral in the human body?",
+        "type": "Anatomy",
+        "options": {
+          "a": "Calcium",
+          "b": "Iron",
+          "c": "Diamond",
+          "d": "Tooth enamel"
+        },
+        "correct_answer": "d"
+      },
+      {
+        "question": "Which gas makes up the majority of Earth's atmosphere?",
+        "type": "Earth Science",
+        "options": {
+          "a": "Nitrogen",
+          "b": "Oxygen",
+          "c": "Carbon dioxide",
+          "d": "Argon"
+        },
+        "correct_answer": "a"
+      }
+    ]
+  }
+  
