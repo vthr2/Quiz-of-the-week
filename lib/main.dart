@@ -42,8 +42,6 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20.0),
-
-            SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -56,12 +54,104 @@ class WelcomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 24.0),
               ),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ScoreBoardScreen()),
+                );
+              },
+              child: Text(
+                'Scoreboard',
+                style: TextStyle(fontSize: 24.0),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
+
+class ScoreBoardScreen extends StatefulWidget {
+  final String? playerName;
+  final int? score;
+
+  ScoreBoardScreen({this.playerName, this.score});
+
+  @override
+  _ScoreBoardScreenState createState() => _ScoreBoardScreenState();
+}
+
+class _ScoreBoardScreenState extends State<ScoreBoardScreen> {
+  late List<Map<String, dynamic>> _scores  = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadScores();
+    print("temp");
+    print(_scores);
+  }
+
+  Future<void> loadScores() async {
+    final jsonString = await rootBundle.loadString('../docs/scoreboard.json');
+    final jsonMap = json.decode(jsonString);
+    setState(() {
+      _scores = jsonMap['scoreboard'].cast<Map<String, dynamic>>();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Scoreboard'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              widget.playerName != null
+                  ? 'Congratulations, ${widget.playerName}!'
+                  : 'Top Scores:',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: _scores.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text('${_scores[index]['name']} - ${_scores[index]['score']}'),
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NameEntryScreen(),
+                  ),
+                );
+              },
+              child: Text('Play Again'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 class NameEntryScreen extends StatefulWidget {
   @override
@@ -150,6 +240,7 @@ class _QuizPageState extends State<QuizPage> {
       _quizData = jsonMap['questions'].cast<Map<String, dynamic>>();
     });
   }
+
   /*
   void checkAnswer(String selectedAnswer) {
     if (_quizData[_currentIndex]['correct_answer'] == selectedAnswer) {
@@ -197,30 +288,17 @@ void checkAnswer(String selectedAnswer) {
     startTimer(); // Start timer for the next question
   }
 
-  void showQuizResult() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Quiz Complete'),
-          content: Text('Your score: $_score / ${_quizData.length}'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                // Reset quiz to play again
-                setState(() {
-                  _currentIndex = 0;
-                  _score = 0;
-                });
-              },
-              child: Text('Play Again'),
-            ),
-          ],
-        );
-      },
-    );
-  }
+void showQuizResult() {
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => ScoreBoardScreen(
+        playerName: widget.playerName,
+        score: _score,
+      ),
+    ),
+  );
+}
 
   void startTimer() {
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
